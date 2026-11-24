@@ -1,0 +1,12 @@
+{
+  "name": "hsk-basisflow-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "BasisFlow Agent (HSK Edition) — Non-Custodial AI Trading Vault & Chat Terminal for HashKey Chain (HSKSwap V3)",
+  "scripts": {
+    "test": "node --test agent/test/agent.test.mjs",
+    "probe": "node agent/agent.mjs --once",
+    "anvil-demo": "node agent/anvil_demo.mjs"
+  },
+  "license": "MIT"
+}

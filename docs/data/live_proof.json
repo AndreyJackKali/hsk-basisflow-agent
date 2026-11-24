@@ -1,0 +1,372 @@
+{
+  "generatedAt": "2026-11-24T12:26:00.807Z",
+  "network": {
+    "mainnet": {
+      "chainId": 177,
+      "rpc": "https://mainnet.hsk.xyz",
+      "explorer": "https://hashkey.blockscout.com",
+      "whsk": "0xB210D2120d57b758EE163cFfb43e73728c471Cf1",
+      "usdt": "0xF1B50eD67A9e2CC94Ad3c477779E2d4cBfFf9029",
+      "factory": "0xD136e36610f35E0Cc3cAd40de858c151f2AA65D4",
+      "router": "0x1f3858C46F8F6fE76260b8208995D228C5cddc64",
+      "pool500": "0xEB33d6666dd2359cB1BF6Ea6D72286Cc1b4a778A",
+      "pool3000": "0x0767F7b1af495D245EA00219cFB8B2Ed6EafAe62"
+    },
+    "testnet": {
+      "chainId": 133,
+      "rpc": "https://testnet.hsk.xyz",
+      "explorer": "https://testnet-explorer.hskchain.net"
+    },
+    "anvilChainId": 133
+  },
+  "liveMainnetSnapshot": {
+    "chainId": 177,
+    "blockNumber": 30588010,
+    "timestamp": "2026-11-24T12:25:57.014Z",
+    "pool500": {
+      "address": "0xEB33d6666dd2359cB1BF6Ea6D72286Cc1b4a778A",
+      "feeBps": 5,
+      "sqrtPriceX96": "25055738251564958613595",
+      "liquidity": "2830955089632",
+      "priceUsdt": 0.100013
+    },
+    "pool3000": {
+      "address": "0x0767F7b1af495D245EA00219cFB8B2Ed6EafAe62",
+      "feeBps": 30,
+      "sqrtPriceX96": "25078314278193296859876",
+      "liquidity": "950573096369",
+      "priceUsdt": 0.100193
+    },
+    "referenceCex": {
+      "medianPrice": 0.081555,
+      "sources": [
+        {
+          "venue": "Gate.io",
+          "price": 0.08141,
+          "bid": 0.08143,
+          "ask": 0.08154,
+          "vol24hUsd": 26323.15271
+        },
+        {
+          "venue": "KuCoin",
+          "price": 0.0817,
+          "bid": 0.0813,
+          "ask": 0.0815
+        }
+      ]
+    },
+    "dexVsCexSpreadBps": 2263.3,
+    "crossTierV3SpreadBps": 18
+  },
+  "deployedContracts": {
+    "tUSDT": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "tWHSK": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "MockPool": "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+    "AgentVault": "0x2279b7a0a67db372996a5fab50d91eaa73d2ebe6",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "agent": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+  },
+  "summary": {
+    "initialEquityUsd": 10000,
+    "executedTrades": 12,
+    "peakEquityUsd": 10799.31,
+    "finalPreCrashEquityUsd": 10748.37,
+    "preCrashReturnPct": 7.48,
+    "stopLossProof": {
+      "stopLossFloorUsd": 9400,
+      "equityBeforeCrashUsd": 10746.68,
+      "equityAtCrashUsd": 8204.7,
+      "txHash": "0xe7ab3fb528abc3e1f3ee549bab18ff7213d31e48cbd7e78fe561e604bf7dc5aa",
+      "blockNumber": 50,
+      "gasUsed": 52767,
+      "vaultPausedOnChain": true,
+      "subsequentAgentTradeReverted": true
+    }
+  },
+  "equityCurve": [
+    {
+      "step": 0,
+      "label": "Init",
+      "equityUsd": 10000,
+      "dexPrice": 0.1
+    },
+    {
+      "step": 1,
+      "label": "T1 BUY",
+      "equityUsd": 9999.12,
+      "dexPrice": 0.09458
+    },
+    {
+      "step": 2,
+      "label": "T2 BUY",
+      "equityUsd": 9963.97,
+      "dexPrice": 0.09434
+    },
+    {
+      "step": 3,
+      "label": "T3 SELL",
+      "equityUsd": 10224.68,
+      "dexPrice": 0.11262
+    },
+    {
+      "step": 4,
+      "label": "T4 SELL",
+      "equityUsd": 10321.62,
+      "dexPrice": 0.11827
+    },
+    {
+      "step": 5,
+      "label": "T5 BUY",
+      "equityUsd": 10270.06,
+      "dexPrice": 0.09788
+    },
+    {
+      "step": 6,
+      "label": "T6 BUY",
+      "equityUsd": 10205.03,
+      "dexPrice": 0.09599
+    },
+    {
+      "step": 7,
+      "label": "T7 SELL",
+      "equityUsd": 10605.61,
+      "dexPrice": 0.11961
+    },
+    {
+      "step": 8,
+      "label": "T8 SELL",
+      "equityUsd": 10744.71,
+      "dexPrice": 0.12632
+    },
+    {
+      "step": 9,
+      "label": "T9 SELL",
+      "equityUsd": 10614.8,
+      "dexPrice": 0.10245
+    },
+    {
+      "step": 10,
+      "label": "T10 BUY",
+      "equityUsd": 10609.3,
+      "dexPrice": 0.0955
+    },
+    {
+      "step": 11,
+      "label": "T11 SELL",
+      "equityUsd": 10799.31,
+      "dexPrice": 0.11819
+    },
+    {
+      "step": 12,
+      "label": "T12 BUY",
+      "equityUsd": 10748.37,
+      "dexPrice": 0.09517
+    }
+  ],
+  "trades": [
+    {
+      "tradeId": 1,
+      "scenario": "Dislocation #1: LP sells WHSK (-3.5% DEX discount)",
+      "action": "BUY",
+      "dexPrice": 0.09458,
+      "refPrice": 0.1005,
+      "spreadBps": 625.93,
+      "regime": "DOWNTREND",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0xe4ddbb25e727786333ddfb1366838b599470ac59d445b73578ef0d459ae4a050",
+      "txHash": "0x8f153c069106df261a17598ce096209da72e91f03706726b99c8df355acd77e8",
+      "blockNumber": 11,
+      "gasUsed": 333328,
+      "equityAfter": 9999.12,
+      "positionPct": 8.99
+    },
+    {
+      "tradeId": 2,
+      "scenario": "Dislocation #2: Continued DEX dip (-4.8% discount)",
+      "action": "BUY",
+      "dexPrice": 0.094337,
+      "refPrice": 0.101,
+      "spreadBps": 706.3,
+      "regime": "DOWNTREND",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x26033c1870153fd392f1f62f7101ba4d5ef45a96a648a355e0fc9413fb996f7c",
+      "txHash": "0x1eb63ab89cc702a3b1ce9e8d8ae9c94c78de7636aa5c695bcf3932bb1ac06e78",
+      "blockNumber": 14,
+      "gasUsed": 282350,
+      "equityAfter": 9963.97,
+      "positionPct": 17.7
+    },
+    {
+      "tradeId": 3,
+      "scenario": "Dislocation #3: Mean-reversion rally (+4.2% DEX rich)",
+      "action": "SELL",
+      "dexPrice": 0.11262,
+      "refPrice": 0.099,
+      "spreadBps": -1209.38,
+      "regime": "UPTREND",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x9ffdad2a7332317dfedf35c1acb727d7149521bdd4c5c1e81be5bee40dbed920",
+      "txHash": "0x7ed2a8dbfbd7505293e3317bee86d09aba96d959449f6df7911c9c22d63a29a7",
+      "blockNumber": 17,
+      "gasUsed": 255350,
+      "equityAfter": 10224.68,
+      "positionPct": 11.14
+    },
+    {
+      "tradeId": 4,
+      "scenario": "Dislocation #4: Momentum spike (+5.5% DEX rich)",
+      "action": "SELL",
+      "dexPrice": 0.118266,
+      "refPrice": 0.0995,
+      "spreadBps": -1586.76,
+      "regime": "UPTREND",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x81321cdcc6d5a00e0a75dd1c64f221ce80248fa7401e9dab7c0820f2a8dad496",
+      "txHash": "0xbeba9bb4b3026dd65db1c7d8ec13699b81991ea59bb019ba6844dd163975f50e",
+      "blockNumber": 20,
+      "gasUsed": 255350,
+      "equityAfter": 10321.62,
+      "positionPct": 3.4
+    },
+    {
+      "tradeId": 5,
+      "scenario": "Dislocation #5: Pullback dip (-4.0% DEX discount)",
+      "action": "BUY",
+      "dexPrice": 0.097883,
+      "refPrice": 0.1012,
+      "spreadBps": 338.87,
+      "regime": "CHOP",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0xa09b8940e1bae4bfce709dd38ccc88c5da257e7fba17ffd694c92a632cc9cfb8",
+      "txHash": "0x88b5b73e72a9c9eaa12de833092d6270d1837d2c23121a4ca711bb4a5110554c",
+      "blockNumber": 23,
+      "gasUsed": 280061,
+      "equityAfter": 10270.06,
+      "positionPct": 11.68
+    },
+    {
+      "tradeId": 6,
+      "scenario": "Dislocation #6: Deep liquidity sweep (-5.2% discount)",
+      "action": "BUY",
+      "dexPrice": 0.095985,
+      "refPrice": 0.1015,
+      "spreadBps": 574.57,
+      "regime": "CHOP",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x38c67cba6f76e61af8afbbce7a3cf72fde936f5eea4f6add6cf449d9d9736052",
+      "txHash": "0x50206e9bb9dd099edcbeec7161b3b68394b8be0e8940d9fdb2ae38bc2f21bf93",
+      "blockNumber": 26,
+      "gasUsed": 280061,
+      "equityAfter": 10205.03,
+      "positionPct": 19.93
+    },
+    {
+      "tradeId": 7,
+      "scenario": "Dislocation #7: Recovery bounce (+4.5% DEX rich)",
+      "action": "SELL",
+      "dexPrice": 0.119607,
+      "refPrice": 0.0988,
+      "spreadBps": -1739.61,
+      "regime": "CHOP",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x9c98e9605fc6fbb00bd0157a32cb14e8bf4f637181249988647f6f06c1863a23",
+      "txHash": "0xb199a229efdbc2cf849e1e7b59e968a4a3f456be29ef9d767be5700eb0ee518a",
+      "blockNumber": 29,
+      "gasUsed": 255350,
+      "equityAfter": 10605.61,
+      "positionPct": 14.61
+    },
+    {
+      "tradeId": 8,
+      "scenario": "Dislocation #8: Spread overshoot (+5.1% DEX rich)",
+      "action": "SELL",
+      "dexPrice": 0.126319,
+      "refPrice": 0.0992,
+      "spreadBps": -2146.87,
+      "regime": "UPTREND",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x263109122fe413df2e9ad52f25ca12749884c5d50ab01af80eabf886e38c03c0",
+      "txHash": "0xd1cfb776d99659fedd71bdddee1f1d2d2e8d3a94f7c4a3c8c2771816a29dc2d9",
+      "blockNumber": 32,
+      "gasUsed": 255350,
+      "equityAfter": 10744.71,
+      "positionPct": 7.47
+    },
+    {
+      "tradeId": 9,
+      "scenario": "Dislocation #9: Afternoon dip (-4.3% DEX discount)",
+      "action": "SELL",
+      "dexPrice": 0.102447,
+      "refPrice": 0.101,
+      "spreadBps": -141.24,
+      "regime": "CHOP",
+      "sizeUsdt": 682.25,
+      "var95Usd": 56.29,
+      "signalHash": "0x7d59c6163b272dc505d0393629b40989675b579332204b0ead4aad11a8d30918",
+      "txHash": "0xb6c1fc8e5a10c1db079a69629e5d2b30dcca559f9fb98d613abafc5202cbd170",
+      "blockNumber": 35,
+      "gasUsed": 255350,
+      "equityAfter": 10614.8,
+      "positionPct": 0.94
+    },
+    {
+      "tradeId": 10,
+      "scenario": "Dislocation #10: Secondary buy signal (-3.8% discount)",
+      "action": "BUY",
+      "dexPrice": 0.095498,
+      "refPrice": 0.1014,
+      "spreadBps": 618.02,
+      "regime": "CHOP",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x528528c7476ae131a415ef7c6957543cc7d4432c1180aa1ddd7b85b48ffeeabe",
+      "txHash": "0xcb2dcb4d1824adea7e778fc00ee15f37fc2841cd34a2181d911dc2c183eb94d8",
+      "blockNumber": 38,
+      "gasUsed": 280061,
+      "equityAfter": 10609.3,
+      "positionPct": 9.37
+    },
+    {
+      "tradeId": 11,
+      "scenario": "Dislocation #11: Reversion take-profit (+4.9% rich)",
+      "action": "SELL",
+      "dexPrice": 0.118191,
+      "refPrice": 0.099,
+      "spreadBps": -1623.73,
+      "regime": "CHOP",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0x8f9ae4dda4bc4665388444b6ae58513c28a0182ca65cf9154ae203f66091229d",
+      "txHash": "0xd876484f4d453e8dcb48ec135506f74b439adcb7055bae1689eb7854fb8b8515",
+      "blockNumber": 41,
+      "gasUsed": 255350,
+      "equityAfter": 10799.31,
+      "positionPct": 2.76
+    },
+    {
+      "tradeId": 12,
+      "scenario": "Dislocation #12: Inventory accumulate before stress test",
+      "action": "BUY",
+      "dexPrice": 0.095174,
+      "refPrice": 0.1025,
+      "spreadBps": 769.75,
+      "regime": "CHOP",
+      "sizeUsdt": 900,
+      "var95Usd": 74.25,
+      "signalHash": "0xe8a04104534efdceec15bd6addbb5698d685b0f323a40ca089f9f66722ebdc89",
+      "txHash": "0x7635253773e740c66db4d20fa99c83d7b0fc744a38b266248b564edbb1c33e18",
+      "blockNumber": 44,
+      "gasUsed": 280061,
+      "equityAfter": 10748.37,
+      "positionPct": 10.68
+    }
+  ]
+}

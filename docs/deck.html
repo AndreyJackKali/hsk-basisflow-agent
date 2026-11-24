@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BasisFlow Agent (HSK Edition) — 8-Slide Pitch Deck</title>
+<style>
+  :root { --bg: #070b14; --panel: #0f172a; --border: #1e293b; --accent: #10b981; --cyan: #06b6d4; --text: #f1f5f9; --muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, -apple-system, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; border-bottom: 1px solid var(--border); background: var(--panel); font-size: 13px; }
+  .topbar a { color: #67e8f9; text-decoration: none; font-weight: 600; }
+  .stage { flex: 1; display: grid; place-items: center; padding: 28px; }
+  .slide { display: none; width: min(1060px, 95vw); min-height: 540px; background: radial-gradient(circle at top right, rgba(6,182,212,0.12), transparent 55%), var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 44px 52px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+  .slide.active { display: flex; flex-direction: column; justify-content: space-between; }
+  .kicker { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+  h1 { font-size: 40px; line-height: 1.12; margin-bottom: 16px; letter-spacing: -0.02em; }
+  h2 { font-size: 30px; margin-bottom: 18px; letter-spacing: -0.02em; }
+  p { font-size: 17px; color: #cbd5e1; line-height: 1.55; max-width: 820px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 22px; }
+  .box { background: rgba(7,11,20,0.75); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .box h3 { font-size: 15px; color: #67e8f9; margin-bottom: 8px; }
+  .box p, .box li { font-size: 14px; color: #cbd5e1; }
+  ul { margin-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .mono { font-family: ui-monospace, monospace; color: #6ee7b7; }
+  .metric { font-size: 30px; font-weight: 800; font-family: ui-monospace, monospace; color: #34d399; }
+  .controls { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-top: 1px solid var(--border); background: var(--panel); }
+  .btn { padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border); background: #1e293b; color: #fff; font-weight: 600; cursor: pointer; }
+  .btn.primary { background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #04131c; border: none; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div><strong>BasisFlow Agent (HSK Edition)</strong> · DoraHacks HSK Chain Horizon Seoul · Track 1: AI Agent Trading</div>
+  <div style="display:flex;gap:14px;">
+    <a href="./index.html">Live Terminal</a>
+    <a href="./demo.mp4">HD Demo Video</a>
+    <a href="https://github.com/AndreyJackKali/hsk-basisflow-agent" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<div class="stage">
+  <section class="slide active">
+    <div>
+      <div class="kicker">Slide 1 / 8 · HSK Chain Horizon · Track 1: AI Agent Trading</div>
+      <h1>BasisFlow Agent (HSK Edition)</h1>
+      <p>Non-custodial, on-chain risk-bounded AI trading vault and conversational execution terminal for <strong>HashKey Chain (HSKSwap V3)</strong>.</p>
+      <div class="grid">
+        <div class="box"><div class="metric">7</div><p>Hard on-chain risk guardrails enforced in <span class="mono">AgentVault.sol</span></p></div>
+        <div class="box"><div class="metric">+7.99%</div><p>Peak return across 12 signed on-chain trades before flash-crash proof</p></div>
+        <div class="box"><div class="metric">23 / 23</div><p>Automated Foundry (256 fuzz) + Node quant/chat tests passing</p></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">Built specifically for HashKey Chain Mainnet (177) &amp; Testnet (133) · Zero custody risk · Verifiable signalHash audit trail</p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 2 / 8 · The Problem</div>
+      <h2>Why Autonomous AI Trading Fails in DeFi Today</h2>
+      <div class="grid">
+        <div class="box"><h3>1. Blind Private-Key Custody</h3><p>Most AI bots demand raw wallet private keys. One hallucination or prompt injection drains 100% of user funds.</p></div>
+        <div class="box"><h3>2. Off-Chain Only "Guardrails"</h3><p>Risk caps written in Python/JS vanish when an LLM loops, APIs glitch, or liquidity gaps during a flash crash.</p></div>
+        <div class="box"><h3>3. Unauditable Decisions</h3><p>Traders cannot verify why an AI agent entered a swap or prove that slippage and drawdown rules were enforced.</p></div>
+      </div>
+    </div>
+    <p><strong>BasisFlow Agent solves all three by moving enforcement on-chain to HashKey Chain.</strong></p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 3 / 8 · Architecture</div>
+      <h2>Non-Custodial <span class="mono">AgentVault.sol</span> + <span class="mono">HSKSwapV3Adapter.sol</span></h2>
+      <div class="grid">
+        <div class="box"><h3>Role Separation</h3><p><strong>Owner</strong> deposits/withdraws USDT, sets risk limits, and holds <span class="mono">emergencyUnwind()</span>. <strong>Agent EOA</strong> can ONLY call <span class="mono">trade()</span> and can NEVER withdraw.</p></div>
+        <div class="box"><h3>7 Hard On-Chain Guardrails</h3><ul><li>maxTradeQuote &amp; maxPositionBps</li><li>maxSlippageBps vs live quote</li><li>cooldownSecs &amp; maxDailyTrades</li><li>dailyLossCapQuote &amp; hard stopLossEquity</li></ul></div>
+        <div class="box"><h3>Permissionless Circuit Breaker</h3><p>Anyone can call <span class="mono">triggerStopLoss()</span> if marked equity drops below <span class="mono">stopLossEquity</span>, freezing the agent instantaneously.</p></div>
+      </div>
+    </div>
+    <p class="mono" style="font-size:13px;">Every trade stores TradeRecord{id, keccak256(signalJSON), buyBase, amountIn, amountOut, equityAfter, timestamp}.</p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 4 / 8 · Real HashKey Chain Mainnet (177) Integration</div>
+      <h2>Live Read-Only HSKSwap V3 Pool &amp; Spread Discovery</h2>
+      <p>Our agent queries live HashKey Chain Mainnet (177) HSKSwap V3 pools via <span class="mono">eth_call slot0()</span> and compares them against real Gate.io &amp; KuCoin spot tickers in real time:</p>
+      <div class="grid">
+        <div class="box"><h3>HSKSwap V3 0.05% Pool</h3><p class="mono">0xEB33d666...1b4a778A</p><p>WHSK (18) / USDT (6) · Live price <strong class="mono">$0.100013</strong></p></div>
+        <div class="box"><h3>HSKSwap V3 0.30% Pool</h3><p class="mono">0x0767F7b1...EafAe62</p><p>Live price <strong class="mono">$0.100193</strong> (+18.0 bps cross-tier)</p></div>
+        <div class="box"><h3>CEX Reference Spot</h3><p>Gate.io ($0.08141) + KuCoin ($0.08170)</p><p>Live DEX-CEX dislocation: <strong class="mono">+2,263 bps</strong></p></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">HSKSwapV3Adapter.sol Q96 math is unit-tested directly against live Mainnet block #30,587,839 sqrtPriceX96 = 25055738251564958613595.</p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 5 / 8 · Quantitative Signal &amp; Risk Engine</div>
+      <h2>BasisFlow Quant Core: Spread + Regime + Monte-Carlo VaR</h2>
+      <div class="grid">
+        <div class="box"><h3>Multi-Venue Dislocation</h3><p>Computes live DEX-vs-CEX basis bps and cross-tier HSKSwap V3 fee-tier spreads with configurable deadbands.</p></div>
+        <div class="box"><h3>EMA-9/21 Regime Filter</h3><p>Kaufman Efficiency Ratio + EMA slope classifies <span class="mono">UPTREND / DOWNTREND / CHOP</span> before sizing.</p></div>
+        <div class="box"><h3>Bootstrap Monte-Carlo VaR</h3><p>Deterministic 500-path empirical return bootstrap computes 95% VaR and 99% CVaR, auto-scaling order size if risk exceeds budget.</p></div>
+      </div>
+    </div>
+    <p>Every signal produces a canonical JSON payload hashed on-chain via <span class="mono">signalHash</span> for complete post-trade auditability.</p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 6 / 8 · Conversational Control</div>
+      <h2>Natural-Language Chat Terminal for Real-Time Control</h2>
+      <p>Users interact directly via our web terminal or CLI to inspect positions, PnL, and hot-swap risk parameters:</p>
+      <div class="grid">
+        <div class="box"><h3>Risk &amp; Sizing</h3><p class="mono">"risk low"</p><p class="mono">"risk high size 800"</p><p>Maps straight to <span class="mono">AgentVault.setLimits()</span>.</p></div>
+        <div class="box"><h3>Frequency &amp; Assets</h3><p class="mono">"every 30s"</p><p class="mono">"assets WHSK/USDT"</p><p>Enforced on-chain via <span class="mono">cooldownSecs</span>.</p></div>
+        <div class="box"><h3>Safety &amp; Audit</h3><p class="mono">"stoploss 9500"</p><p class="mono">"pause" / "explain" / "status"</p><p>Instant freeze + human-readable trade rationale.</p></div>
+      </div>
+    </div>
+    <p>Try it live right now at <a href="./index.html" style="color:#34d399;">index.html</a> (includes 1-click "simulate crash" stop-loss demo).</p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 7 / 8 · Verified End-to-End On-Chain Proof</div>
+      <h2>12 Real Signed Trades + Live Flash-Crash Stop-Loss Proof</h2>
+      <div class="grid">
+        <div class="box"><div class="metric">$10,799</div><p>Peak equity (+7.99%) across 12 signed trades on Anvil chainId 133 mirror (<span class="mono">tUSDT/tWHSK</span>)</p></div>
+        <div class="box"><div class="metric">$8,204</div><p>Simulated -60% LP flash crash breached <span class="mono">$9,400</span> floor → <span class="mono">triggerStopLoss()</span> fired on-chain</p></div>
+        <div class="box"><div class="metric">100%</div><p><span class="mono">vault.paused() == true</span> verified; subsequent agent trade reverted with <span class="mono">IsPaused()</span></p></div>
+      </div>
+    </div>
+    <p>All 12 transaction hashes, gas counts, and <span class="mono">signalHash</span> records are published in <span class="mono">docs/data/live_proof.json</span> and reproducible via <span class="mono">npm run anvil-demo</span>.</p>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Slide 8 / 8 · Security, CI &amp; Mainnet Roadmap</div>
+      <h2>Production-Ready for HashKey Chain Mainnet (177)</h2>
+      <div class="grid">
+        <div class="box"><h3>Automated CI (GitHub Actions)</h3><ul><li>17 Foundry tests incl. 256-run fuzzing</li><li>6 Node quant, chat &amp; Q96 RPC tests</li><li>Zero external Solidity dependencies</li></ul></div>
+        <div class="box"><h3>1-Command Deploy Scripts</h3><p><span class="mono">DeployTestnet</span> (chainId 133) and <span class="mono">DeployMainnet</span> (chainId 177 wired directly to live HSKSwap SwapRouter02).</p></div>
+        <div class="box"><h3>Next Milestones</h3><ul><li>Multi-pool routing (0.05% + 0.30% HSKSwap V3)</li><li>Chainlink HSK/USD oracle sanity check</li><li>Telegram &amp; WebSocket alert relay</li></ul></div>
+      </div>
+    </div>
+    <p style="color:#6ee7b7;font-weight:700;">Thank you! Explore the live interactive terminal, HD demo video, and open-source repository.</p>
+  </section>
+</div>
+
+<div class="controls">
+  <button class="btn" id="prevBtn">← Previous</button>
+  <div id="counter" style="font-family:monospace;color:var(--muted);">1 / 8</div>
+  <button class="btn primary" id="nextBtn">Next →</button>
+</div>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+let idx = 0;
+function show(i) {
+  idx = (i + slides.length) % slides.length;
+  slides.forEach((s, k) => s.classList.toggle('active', k === idx));
+  document.getElementById('counter').textContent = `${idx + 1} / ${slides.length}`;
+}
+document.getElementById('prevBtn').onclick = () => show(idx - 1);
+document.getElementById('nextBtn').onclick = () => show(idx + 1);
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+});
+</script>
+</body>
+</html>
