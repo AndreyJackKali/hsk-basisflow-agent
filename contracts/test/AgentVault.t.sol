@@ -275,8 +275,8 @@ contract AgentVaultTest {
     }
 
     function testFuzz_ValidTradeSizesNeverBreachInvariants(uint256 rawAmt) public {
-        // Bound between 1 USDT and maxTradeQuote (1,000 USDT)
-        uint256 amt = (rawAmt % 1_000e6) + 1e6;
+        // Bound strictly between 1 USDT (1e6) and maxTradeQuote (1,000 USDT = 1_000e6) inclusive
+        uint256 amt = (rawAmt % (1_000e6 - 1e6 + 1)) + 1e6;
         vm.prank(AGENT);
         uint256 out = vault.trade(true, amt, keccak256(abi.encodePacked("fuzz", amt)));
         require(out > 0, "zero out");

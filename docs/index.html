@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>BasisFlow Agent — HashKey Chain (HSKSwap V3) AI Trading Vault</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='monospace' font-weight='800' font-size='28' fill='%2304131c'%3EBF%3C/text%3E%3C/svg%3E" />
 <style>
   :root {
     --bg: #070b14;
@@ -75,6 +76,12 @@
   .tag-sell { color: #fbbf24; font-weight: 700; }
   .addr-bar { display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; font-family: var(--mono); color: var(--muted); margin-top: 10px; }
   .addr-bar code { color: #a5f3fc; }
+  .tag-sim { display: inline-block; padding: 1px 5px; border-radius: 4px; font-size: 10px; font-weight: 700; background: rgba(245,158,11,0.18); color: #fcd34d; margin-left: 4px; }
+  .site-foot { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+  @media (max-width: 600px) {
+    header { padding: 12px 14px; }
+    .wrap { padding: 14px 12px 32px; }
+  }
 </style>
 </head>
 <body>
@@ -88,6 +95,7 @@
   </div>
   <div class="nav-pills">
     <span class="pill live" id="rpcStatus">HSK Mainnet 177: connecting...</span>
+    <a class="pill primary" href="./judge-brief.html">📋 Judge Brief</a>
     <a class="pill primary" href="./deck.html">8-Slide Pitch Deck</a>
     <a class="pill primary" href="./demo.mp4">HD Demo Video</a>
     <a class="pill" href="https://github.com/AndreyJackKali/hsk-basisflow-agent" target="_blank" rel="noopener">GitHub Repo</a>
@@ -133,10 +141,10 @@
 
       <div class="guard-grid" id="guardGrid"></div>
       <div class="addr-bar">
-        <span>HSKSwap V3 Pool (0.05%): <code>0xEB33...778A</code></span>
-        <span>SwapRouter02: <code>0x1f38...dc64</code></span>
-        <span>WHSK: <code>0xB210...1Cf1</code></span>
-        <span>USDT: <code>0xF1B5...9029</code></span>
+        <span>HSKSwap V3 Pool (0.05%): <a href="https://hashkey.blockscout.com/address/0xEB33d6666dd2359cB1BF6Ea6D72286Cc1b4a778A" target="_blank" rel="noopener"><code>0xEB33…778A</code> ↗</a></span>
+        <span>SwapRouter02: <a href="https://hashkey.blockscout.com/address/0x1f3858C46F8F6fE76260b8208995D228C5cddc64" target="_blank" rel="noopener"><code>0x1f38…dc64</code> ↗</a></span>
+        <span>WHSK: <a href="https://hashkey.blockscout.com/address/0xB210D2120d57b758EE163cFfb43e73728c471Cf1" target="_blank" rel="noopener"><code>0xB210…1Cf1</code> ↗</a></span>
+        <span>USDT: <a href="https://hashkey.blockscout.com/address/0xF1B50eD67A9e2CC94Ad3c477779E2d4cBfFf9029" target="_blank" rel="noopener"><code>0xF1B5…9029</code> ↗</a></span>
       </div>
     </div>
 
@@ -189,6 +197,16 @@
       </table>
     </div>
   </div>
+
+  <footer class="site-foot">
+    <span>BasisFlow Agent (HSK Edition) · DoraHacks HSK Chain Horizon · Track 1: AI Agent Trading</span>
+    <span>
+      <a href="./judge-brief.html">1-Page Judge Brief</a> ·
+      <a href="./deck.html">8-Slide Deck</a> ·
+      <a href="./demo.mp4" target="_blank" rel="noopener">82s HD Demo</a> ·
+      <a href="./data/live_proof.json" target="_blank" rel="noopener">live_proof.json</a>
+    </span>
+  </footer>
 </div>
 
 <script>
@@ -318,9 +336,9 @@ function renderTrades() {
       <td>${t.spreadBps > 0 ? '+' : ''}${t.spreadBps} bps</td>
       <td>$${t.sizeUsdt}</td>
       <td>$${t.var95Usd}</td>
-      <td class="${t.equityAfter >= 10000 ? 'pos' : 'neg'}">$${t.equityAfter.toLocaleString(undefined,{minimumFractionDigits:2})}</td>
+      <td class="${t.equityAfter >= 10000 ? 'pos' : 'neg'}">$${t.equityAfter.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
       <td title="${t.signalHash}">${t.signalHash.slice(0, 14)}…</td>
-      <td title="${t.txHash}">${t.txHash.slice(0, 12)}…</td>
+      <td title="${t.txHash}">${t.txHash.slice(0, 12)}…${t.simulated ? '<span class="tag-sim">SIM</span>' : ''}</td>
     </tr>
   `).join('');
 }
@@ -360,6 +378,7 @@ function handleChat(cmd) {
       equityAfter: state.equityUsd,
       signalHash: '0x' + Array.from({ length: 16 }, () => Math.floor(Math.random() * 16).toString(16)).join('') + '...',
       txHash: '0xsim' + Math.floor(Math.random() * 1e9).toString(16),
+      simulated: true,
     };
     state.trades.push(t);
     state.curve.push({ step: state.curve.length, label: `T${t.tradeId}`, equityUsd: state.equityUsd });
@@ -450,7 +469,8 @@ async function boot() {
     state.dexPrice = proof.liveMainnetSnapshot?.pool500?.priceUsdt ?? 0.100013;
     state.refPrice = proof.liveMainnetSnapshot?.referenceCex?.medianPrice ?? 0.081555;
     if (proof.liveMainnetSnapshot?.dexVsCexSpreadBps != null) {
-      document.getElementById('kpiSpread').textContent = `+${proof.liveMainnetSnapshot.dexVsCexSpreadBps} bps`;
+      const sp = Math.round(proof.liveMainnetSnapshot.dexVsCexSpreadBps);
+      document.getElementById('kpiSpread').textContent = `${sp >= 0 ? '+' : ''}${sp.toLocaleString()} bps`;
     }
     if (proof.liveMainnetSnapshot?.referenceCex?.medianPrice) {
       document.getElementById('kpiRef').textContent = `Gate.io & KuCoin avg: $${proof.liveMainnetSnapshot.referenceCex.medianPrice}`;

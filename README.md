@@ -1,12 +1,17 @@
 # BasisFlow Agent (HSK Edition)
 
+[![BasisFlow HSK Agent CI](https://github.com/AndreyJackKali/hsk-basisflow-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/AndreyJackKali/hsk-basisflow-agent/actions/workflows/ci.yml)
+[![Live Terminal](https://img.shields.io/badge/Live%20Terminal-GitHub%20Pages-10b981?style=flat-square)](https://andreyjackkali.github.io/hsk-basisflow-agent/)
+[![Judge Brief](https://img.shields.io/badge/1--Page%20Judge%20Brief-Live%20Card-06b6d4?style=flat-square)](https://andreyjackkali.github.io/hsk-basisflow-agent/judge-brief.html)
+
 **Non-Custodial, On-Chain Risk-Bounded AI Trading Vault & Conversational Terminal for HashKey Chain (HSKSwap V3).**
 
 Built for **DoraHacks HSK Chain Horizon · Seoul — Track 1: AI Agent Trading**.
 
 - **Live Interactive Web & Chat Terminal:** https://andreyjackkali.github.io/hsk-basisflow-agent/
+- **1-Page Printable Judge Brief (Rubric + Mainnet Contracts + Demo Video):** https://andreyjackkali.github.io/hsk-basisflow-agent/judge-brief.html
 - **8-Slide Interactive Pitch Deck:** https://andreyjackkali.github.io/hsk-basisflow-agent/deck.html
-- **Narrated HD Demo Video:** https://andreyjackkali.github.io/hsk-basisflow-agent/demo.mp4
+- **Narrated HD Demo Video (82s, 1280×720):** https://andreyjackkali.github.io/hsk-basisflow-agent/demo.mp4
 
 ---
 
